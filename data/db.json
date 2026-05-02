@@ -1,0 +1,11 @@
+{
+  "katalog": [
+    {
+      "id": 1,
+      "nama": "Elegant Gold",
+      "gambar": "/assets/images/tema1.jpg",
+      "link": "https://template1.vercel.app",
+      "kategori": "wedding"
+    }
+  ]
+}
