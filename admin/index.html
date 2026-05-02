@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-6 bg-gray-100">
+
+<h1 class="text-xl font-bold mb-4">Admin Katalog</h1>
+
+<input id="nama" placeholder="Nama Tema" class="border p-2 mb-2 w-full">
+<input id="gambar" placeholder="Link Gambar" class="border p-2 mb-2 w-full">
+<input id="link" placeholder="Link Preview" class="border p-2 mb-2 w-full">
+
+<button onclick="tambah()" class="bg-black text-white px-4 py-2 rounded">
+  Tambah Tema
+</button>
+
+<ul id="list" class="mt-6"></ul>
+
+<script>
+let db = JSON.parse(localStorage.getItem("db")) || { katalog: [] };
+
+function render(){
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  db.katalog.forEach(item => {
+    list.innerHTML += `<li class="bg-white p-2 mb-2 rounded">
+      ${item.nama}
+    </li>`;
+  });
+}
+
+function tambah(){
+  const data = {
+    id: Date.now(),
+    nama: document.getElementById("nama").value,
+    gambar: document.getElementById("gambar").value,
+    link: document.getElementById("link").value
+  };
+
+  db.katalog.push(data);
+  localStorage.setItem("db", JSON.stringify(db));
+  render();
+}
+
+render();
+</script>
+
+</body>
+</html>
