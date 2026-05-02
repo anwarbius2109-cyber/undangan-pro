@@ -1,0 +1,15 @@
+<script>
+const db = JSON.parse(localStorage.getItem("db")) || { katalog: [] };
+
+const katalog = document.getElementById("katalog");
+
+db.katalog.forEach(item => {
+  katalog.innerHTML += `
+    <div class="bg-white rounded shadow">
+      <img src="${item.gambar}">
+      <h2>${item.nama}</h2>
+      <a href="${item.link}" target="_blank">Preview</a>
+    </div>
+  `;
+});
+</script>
